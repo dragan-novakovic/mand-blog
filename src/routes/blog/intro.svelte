@@ -33,21 +33,43 @@
   }
 
   .tones {
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     width: 160px;
     font-size: 2em;
     list-style-type: none;
     text-decoration: underline;
+    background: lightgray;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 8px;
+  }
+
+  .example {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    background: lightgray;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
   }
 </style>
 
-Ｉ
 <svelte:head>
   <title>Intro</title>
 </svelte:head>
 
-<h1>Intro part - １</h1>
+<div class="title">
+  <h1>Intro part - I</h1>
+  <h4>Word count: {words.length}</h4>
+</div>
 
 <div class="content">
   <div>
@@ -56,22 +78,22 @@
       is the Chinese lagnuage phonetic system. It is used to mark Mandarin
       Chinese pronunciation by the Latin alphabet.
     </p>
-    <div>
+    <div class="example">
       <span>bā</span>
       =
       <h3>八</h3>
     </div>
   </div>
-
-  <h2>Tones</h2>
+  <h2>Tones:</h2>
   <ul class="tones">
     <li>ā</li>
     <li>á</li>
     <li>ǎ</li>
     <li>à</li>
-
   </ul>
+
   <hr />
+
   <h2>Greetings</h2>
   <ul>
     {#each words as { eng, ch, pinyin }}
@@ -83,4 +105,6 @@
       </li>
     {/each}
   </ul>
+  <hr />
+  <h2>Examples</h2>
 </div>

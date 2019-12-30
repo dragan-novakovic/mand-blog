@@ -1,7 +1,6 @@
 <style>
   h1,
-  figure,
-  p {
+  figure {
     text-align: center;
     margin: 0 auto;
   }
