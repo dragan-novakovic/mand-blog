@@ -23,4 +23,7 @@
   <li>
     <a rel="prefetch" href="blog/intro">Intro</a>
   </li>
+  <li>
+    <a rel="prefetch" href="blog/chapter2">Chapter 2</a>
+  </li>
 </ul>
