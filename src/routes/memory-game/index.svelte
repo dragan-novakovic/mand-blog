@@ -12,6 +12,12 @@
   ];
 
   const eng_only = words.map(({ eng }) => eng);
+
+  // init - set all on hide
+  // on click show after 3s hide
+  // if same leave open or remove from array
+
+  // animations
 </script>
 
 <style>
@@ -37,7 +43,12 @@
     align-items: center;
     max-width: 180px;
     height: 120px;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+
+  .card-container:hover {
+    cursor: pointer;
   }
 
   .pinyin {
@@ -57,6 +68,7 @@
 
   .eng {
     font-weight: bold;
+    text-align: center;
   }
 
   @media (min-width: 480px) {

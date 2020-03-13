@@ -68,7 +68,12 @@
       <a rel="prefetch" class:selected={segment === 'blog'} href="blog">blog</a>
     </li>
     <li>
-      <a rel="prefetch" class:selected={segment === 'game'} href="game">game</a>
+      <a rel="prefetch" class:selected={segment === 'game'} href="memory-game">
+        Memory Game
+      </a>
+    </li>
+    <li>
+      <a rel="prefetch" class:selected={segment === 'test'} href="test">Test</a>
     </li>
   </ul>
   <div class="nav-title">
