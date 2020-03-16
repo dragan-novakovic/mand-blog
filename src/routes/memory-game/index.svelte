@@ -1,4 +1,8 @@
 <script>
+  import { fade } from "svelte/transition";
+  import { flip } from "svelte/animate";
+  import { quintOut } from "svelte/easing";
+
   const words = [
     { eng: "Plural marker for people", ch: "们", pinyin: "men" },
     { eng: "To Speak", ch: "说", pinyin: "shuō" },
@@ -11,11 +15,36 @@
     { eng: "Chinese character", ch: "汉字", pinyin: "hànzì" }
   ];
 
-  const eng_only = words.map(({ eng }) => eng);
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
 
-  // init - set all on hide
-  // on click show after 3s hide
-  // if same leave open or remove from array
+    return array;
+  }
+
+  const eng_only = words.map(({ eng }) => eng);
+  const all_words = shuffleArray([...words, ...eng_only]);
+
+  let active = [];
+  let show = [];
+
+  function handleSelect(e, index) {
+    if (active.length < 2) {
+      active.push(index);
+    }
+
+    if (active.length > 2) {
+      active.pop();
+      active.push(index);
+    }
+
+    setTimeout(() => {
+      active = [];
+    }, 3000);
+    show = show;
+  }
 
   // animations
 </script>
@@ -45,6 +74,16 @@
     height: 120px;
     border: 2px solid black;
     border-radius: 5px;
+  }
+
+  .back {
+    background: repeating-linear-gradient(
+      45deg,
+      #606dbc,
+      #606dbc 10px,
+      #465298 10px,
+      #465298 20px
+    );
   }
 
   .card-container:hover {
@@ -85,16 +124,25 @@
 <main>
   <h1>HSK 1 --- Level 1</h1>
   <div class="board-container">
-    {#each words as { eng, ch, pinyin }, i}
-      <div class="card-container">
-        <p class="pinyin">{pinyin}</p>
-        <p class="hanzi">{ch}</p>
-      </div>
+    {#each all_words as word, i}
+      {#if show.includes(i) || active.includes(i)}
+        <div class="card-container">
+          {#if typeof word === 'object'}
+            <p class="pinyin">{word.pinyin}</p>
+            <p class="hanzi">{word.ch}</p>
+          {:else}
+            <p class="eng">{word}</p>
+          {/if}
+        </div>
+      {:else}
+        <div on:click={e => handleSelect(e, i)} class="card-container back" />
+      {/if}
     {/each}
-    {#each eng_only as eng, i}
-      <div class="card-container">
-        <p class="eng">{eng}</p>
-      </div>
-    {/each}
+    <!-- 
+      {#each eng_only as eng, i}
+        <div class="card-container">
+         
+        </div>
+      {/each} -->
   </div>
 </main>
