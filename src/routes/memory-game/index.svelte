@@ -31,13 +31,28 @@
   let show = [];
 
   function handleSelect(e, index) {
+    //fix timer
     if (active.length < 2) {
       active.push(index);
+      show = show;
     }
 
     if (active.length > 2) {
       active.pop();
       active.push(index);
+      show = show;
+    }
+
+    if (active.length === 2) {
+      const a = all_words[active[0]].eng || all_words[active[0]];
+      const b = all_words[active[1]].eng || all_words[active[1]];
+      console.log({ a, b });
+
+      if (a === b) {
+        alert("WIN");
+        show.push(active[0]);
+        show.push(active[1]);
+      }
     }
 
     setTimeout(() => {
