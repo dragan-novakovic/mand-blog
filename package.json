@@ -9,8 +9,6 @@
     "start": "node __sapper__/build"
   },
   "dependencies": {
-    "@rollup/plugin-babel": "^5.2.0",
-    "@sveltejs/gl": "0.0.37",
     "compression": "^1.7.4",
     "polka": "next",
     "sirv": "^0.4.2"
@@ -20,6 +18,7 @@
     "sapper": "^0.28.0",
     "svelte": "^3.24.1",
     "@babel/core": "^7.11.1",
+    "@rollup/plugin-babel": "^5.2.0",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",

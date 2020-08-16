@@ -72,14 +72,6 @@
         Memory Game
       </a>
     </li>
-    <li>
-      <a
-        rel="prefetch aria-current"
-        class:selected={segment === 'test'}
-        href="test">
-        Test
-      </a>
-    </li>
   </ul>
   <div class="nav-title">
     <h2>Blog</h2>
