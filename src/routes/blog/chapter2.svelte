@@ -2,7 +2,7 @@
 
 </script>
 
-<script>
+<script lang="ts">
   const words = [
     { eng: "Plural marker for people", ch: "们", pinyin: "men" },
     { eng: "To Speak", ch: "说", pinyin: "shuō" },
@@ -12,7 +12,7 @@
     { eng: "To learn; To Study", ch: "学", pinyin: "xué" },
     { eng: "Also; Too", ch: "也", pinyin: "yě" },
     { eng: "To Write", ch: "写", pinyin: "xiě" },
-    { eng: "Chinese character", ch: "汉字", pinyin: "hànzì" }
+    { eng: "Chinese character", ch: "汉字", pinyin: "hànzì" },
   ];
 </script>
 
@@ -29,7 +29,7 @@
     font-size: 2em;
   }
 
-  .tones {
+  /* .tones {
     margin: 0;
     padding: 0;
     display: flex;
@@ -42,16 +42,16 @@
     border-radius: 5px;
     border: 1px solid black;
     padding: 8px;
-  }
+  } */
 
-  .example {
+  /* .example {
     display: inline-block;
     border: 1px solid black;
     padding: 8px;
     border-radius: 5px;
     background: lightgray;
     margin-bottom: 10px;
-  }
+  } */
 
   .title {
     display: flex;

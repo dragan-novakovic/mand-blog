@@ -26,4 +26,10 @@
   <li>
     <a rel="prefetch" href="blog/chapter2">Chapter 2</a>
   </li>
+  <li>
+    <a rel="prefetch" href="blog/chapter3">Chapter 3</a>
+  </li>
+  <li>
+    <a rel="prefetch" href="blog/chapter4">Chapter 4</a>
+  </li>
 </ul>

@@ -73,7 +73,12 @@
       </a>
     </li>
     <li>
-      <a rel="prefetch" class:selected={segment === 'test'} href="test">Test</a>
+      <a
+        rel="prefetch aria-current"
+        class:selected={segment === 'test'}
+        href="test">
+        Test
+      </a>
     </li>
   </ul>
   <div class="nav-title">
