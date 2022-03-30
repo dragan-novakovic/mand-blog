@@ -1,0 +1,2 @@
+# mand-blog
+Svelte app
