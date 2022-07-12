@@ -1,61 +1,40 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
+<style>
+  h1,
+  figure {
+    text-align: center;
+    margin: 0 auto;
+  }
 
-<script lang="ts">
-	import Counter from '$lib/Counter.svelte';
-</script>
+  h1 {
+    font-size: 2.8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
+  }
+
+  figure {
+    margin: 0 0 1em 0;
+  }
+
+  img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 0 1em 0;
+  }
+
+  @media (min-width: 480px) {
+    h1 {
+      font-size: 4em;
+    }
+  }
+</style>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+  <title>Mandarin Blog</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
+<h1>Great success!</h1>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
+<figure>
+  <img alt="Borat" src="great-success.png" />
+</figure>
