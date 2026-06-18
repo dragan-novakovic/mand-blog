@@ -2,6 +2,10 @@
 
 :root {
   font-family:
+    Inter,
+    "Noto Sans SC",
+    "Microsoft YaHei",
+    "PingFang SC",
     Arial,
     -apple-system,
     BlinkMacSystemFont,
@@ -14,44 +18,65 @@
     "Helvetica Neue",
     sans-serif;
   --font-mono: "Fira Mono", monospace;
-  --pure-white: #ffffff;
-  --primary-color: #b9c6d2;
-  --secondary-color: #d0dde9;
-  --tertiary-color: #edf0f8;
-  --accent-color: #ff3e00;
-  --heading-color: rgba(0, 0, 0, 0.7);
-  --text-color: #444444;
-  --background-without-opacity: rgba(255, 255, 255, 0.7);
+  --pure-white: #fffaf3;
+  --primary-color: #fbefe1;
+  --secondary-color: #f7dbc8;
+  --tertiary-color: #fff8ee;
+  --accent-color: #d9432f;
+  --accent-color-strong: #b52520;
+  --gold-color: #f0ad3d;
+  --ink-color: #24312f;
+  --jade-color: #0f7b68;
+  --heading-color: #24211d;
+  --text-color: #5f574f;
+  --muted-color: #8d7e71;
+  --card-color: rgba(255, 252, 246, 0.9);
+  --line-color: rgba(143, 76, 43, 0.14);
+  --shadow-soft: 0 24px 70px rgba(86, 52, 29, 0.13);
   --column-width: 42rem;
   --column-margin-top: 4rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background-color: var(--primary-color);
-  background: linear-gradient(
-    180deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 10.45%,
-    var(--tertiary-color) 41.35%
-  );
+  color: var(--text-color);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(217, 67, 47, 0.18),
+      transparent 32rem
+    ),
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(15, 123, 104, 0.16),
+      transparent 28rem
+    ),
+    linear-gradient(
+      135deg,
+      var(--primary-color) 0%,
+      var(--secondary-color) 38%,
+      var(--tertiary-color) 100%
+    );
 }
 
 body::before {
-  content: "";
-  width: 80vw;
-  height: 100vh;
+  content: "学";
+  width: 24rem;
+  height: 24rem;
   position: absolute;
-  top: 0;
-  left: 10vw;
+  top: 7rem;
+  right: 5vw;
   z-index: -1;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    var(--pure-white) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  opacity: 0.05;
+  color: rgba(217, 67, 47, 0.07);
+  font-family: "Noto Serif CJK SC", "Songti SC", serif;
+  font-size: 24rem;
+  line-height: 1;
+  transform: rotate(-8deg);
 }
 
 #svelte {
@@ -62,6 +87,8 @@ body::before {
 
 h1,
 h2,
+h3,
+h4,
 p {
   font-weight: 400;
   color: var(--heading-color);
@@ -77,16 +104,20 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--accent-color-strong);
 }
 
 h1 {
-  font-size: 2rem;
-  text-align: center;
+  font-size: clamp(2.4rem, 8vw, 5.8rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+  margin: 0;
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
 }
 
 pre {
@@ -110,8 +141,38 @@ button:focus:not(:focus-visible) {
   outline: none;
 }
 
+button,
+a {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.eyebrow {
+  color: var(--accent-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin: 0 0 0.9rem;
+  text-transform: uppercase;
+}
+
+.panel {
+  background: var(--card-color);
+  border: 1px solid var(--line-color);
+  border-radius: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.hanzi {
+  font-family: "Noto Serif CJK SC", "Songti SC", "STSong", serif;
+}
+
 @media (min-width: 720px) {
   h1 {
-    font-size: 2.4rem;
+    font-size: clamp(3.4rem, 8vw, 6.8rem);
   }
 }

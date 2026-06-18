@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import ChapterPage from "../../../components/ChapterPage.svelte";
+
   const words = [
     { eng: "I", ch: "我", pinyin: "wǒ" },
     { eng: "You", ch: "你", pinyin: "nǐ" },
@@ -9,98 +11,44 @@
     { eng: "Question particle", ch: "吗", pinyin: "ma" },
     { eng: "Hello", ch: "你好", pinyin: "nǐhǎo" },
     { eng: "Goodbye", ch: "再见", pinyin: "zàijiàn" },
-    { eng: "person", ch: "人", pinyin: "rén" },
+    { eng: "Person", ch: "人", pinyin: "rén" },
     { eng: "China", ch: "中国", pinyin: "zhōngguó" },
     { eng: "America", ch: "美国", pinyin: "měiguó" }
   ];
+
+  const insights = [
+    {
+      title: "Tone marks first",
+      body: "Pinyin shows pronunciation with tone marks: ā, á, ǎ, à. Read the tone before memorizing the character.",
+      ch: "声"
+    },
+    {
+      title: "Question particle",
+      body: "Add 吗 at the end of a statement to turn it into a simple yes-or-no question.",
+      ch: "吗"
+    },
+    {
+      title: "People and places",
+      body: "Combine person words with country names to build beginner sentences quickly.",
+      ch: "人"
+    }
+  ];
+
+  const phrases = [
+    { zh: "你好。", pinyin: "nǐ hǎo.", translation: "Hello." },
+    { zh: "你是中国人吗？", pinyin: "nǐ shì zhōng guó rén ma?", translation: "Are you Chinese?" },
+    { zh: "我不是美国人。", pinyin: "wǒ bú shì měi guó rén.", translation: "I am not American." }
+  ];
 </script>
 
-<style>
-  h1 {
-    text-transform: uppercase;
-  }
-
-  h3 {
-    display: inline;
-    font-weight: bold;
-    font-family: "Arial Unicode MS";
-    font-stretch: extra-expanded;
-    font-size: 2em;
-  }
-
-  .tones {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    width: 160px;
-    font-size: 2em;
-    list-style-type: none;
-    text-decoration: underline;
-    background: lightgray;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: 8px;
-  }
-
-  .example {
-    display: inline-block;
-    border: 1px solid black;
-    padding: 8px;
-    border-radius: 5px;
-    background: lightgray;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
-
-<svelte:head>
-  <title>Intro</title>
-</svelte:head>
-
-<div class="title">
-  <h1>Intro part - I</h1>
-  <h4>Word count: {words.length}</h4>
-</div>
-
-<div class="content">
-  <div>
-    <h2>Pinyin</h2>
-    <p>
-      is the Chinese lagnuage phonetic system. It is used to mark Mandarin
-      Chinese pronunciation by the Latin alphabet.
-    </p>
-    <div class="example">
-      <span>bā</span>
-      =
-      <h3>八</h3>
-    </div>
-  </div>
-  <h2>Tones:</h2>
-  <ul class="tones">
-    <li>ā</li>
-    <li>á</li>
-    <li>ǎ</li>
-    <li>à</li>
-  </ul>
-
-  <hr />
-
-  <h2>Greetings</h2>
-  <ul>
-    {#each words as { eng, ch, pinyin }}
-      <li>
-        {eng} -
-        <h3>{ch}</h3>
-        /
-        <span>{pinyin}</span>
-      </li>
-    {/each}
-  </ul>
-  <hr />
-  <h2>Examples</h2>
-</div>
+<ChapterPage
+  chapter="Chapter 01"
+  title="Pinyin, greetings, and people"
+  description="Start with the sounds of Mandarin, the four tones, and the first words you need for greeting people."
+  leadCharacter="你"
+  leadPinyin="nǐ · you"
+  lessonTheme="Tones and introductions"
+  {words}
+  {insights}
+  {phrases}
+/>

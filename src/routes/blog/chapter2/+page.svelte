@@ -1,4 +1,6 @@
 <script lang="ts">
+  import ChapterPage from "../../../components/ChapterPage.svelte";
+
   const words = [
     { eng: "Plural marker for people", ch: "们", pinyin: "men" },
     { eng: "To Speak", ch: "说", pinyin: "shuō" },
@@ -8,75 +10,42 @@
     { eng: "To learn; To Study", ch: "学", pinyin: "xué" },
     { eng: "Also; Too", ch: "也", pinyin: "yě" },
     { eng: "To Write", ch: "写", pinyin: "xiě" },
-    { eng: "Chinese character", ch: "汉字", pinyin: "hànzì" },
+    { eng: "Chinese character", ch: "汉字", pinyin: "hànzì" }
+  ];
+
+  const insights = [
+    {
+      title: "Language pattern",
+      body: "汉语 and 英语 both end in 语, a useful character for language names.",
+      ch: "语"
+    },
+    {
+      title: "Group pronouns",
+      body: "Add 们 to people words to make groups, such as 我们 for we and 你们 for you all.",
+      ch: "们"
+    },
+    {
+      title: "Study verbs",
+      body: "学, 说, and 写 make a practical mini set for talking about language learning.",
+      ch: "学"
+    }
+  ];
+
+  const phrases = [
+    { zh: "我们学汉语。", pinyin: "wǒ men xué hàn yǔ.", translation: "We study Chinese." },
+    { zh: "他们也说英语。", pinyin: "tā men yě shuō yīng yǔ.", translation: "They also speak English." },
+    { zh: "我写汉字。", pinyin: "wǒ xiě hàn zì.", translation: "I write Chinese characters." }
   ];
 </script>
 
-<style>
-  h1 {
-    text-transform: uppercase;
-  }
-
-  h3 {
-    display: inline;
-    font-weight: bold;
-    font-family: "Arial Unicode MS";
-    font-stretch: extra-expanded;
-    font-size: 2em;
-  }
-
-  /* .tones {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    width: 160px;
-    font-size: 2em;
-    list-style-type: none;
-    text-decoration: underline;
-    background: lightgray;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: 8px;
-  } */
-
-  /* .example {
-    display: inline-block;
-    border: 1px solid black;
-    padding: 8px;
-    border-radius: 5px;
-    background: lightgray;
-    margin-bottom: 10px;
-  } */
-
-  .title {
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
-
-<svelte:head>
-  <title>Intro</title>
-</svelte:head>
-
-<div class="title">
-  <h1>Chapter - II</h1>
-  <h4>Word count: {words.length}</h4>
-</div>
-<hr />
-
-<div class="content">
-  <h2>Learning Chinese 1</h2>
-  <ul>
-    {#each words as { eng, ch, pinyin }}
-      <li>
-        {eng} -
-        <h3>{ch}</h3>
-        /
-        <span>{pinyin}</span>
-      </li>
-    {/each}
-  </ul>
-  <hr />
-  <h2>Examples</h2>
-</div>
+<ChapterPage
+  chapter="Chapter 02"
+  title="Speaking and studying Chinese"
+  description="Learn the core words for languages, studying, speaking, writing, and talking about groups of people."
+  leadCharacter="语"
+  leadPinyin="yǔ · language"
+  lessonTheme="Language learning"
+  {words}
+  {insights}
+  {phrases}
+/>
