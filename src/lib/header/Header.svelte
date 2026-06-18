@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import logo from './svelte-logo.svg';
+
+	const pathname = $derived(page.url.pathname);
 </script>
 
 <header>
@@ -15,12 +17,12 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.url.pathname === '/about'}>
-				<a sveltekit:prefetch href="/about">About</a>
+			<li class:active={pathname === '/'}><a data-sveltekit-preload-data="hover" href="/">Home</a></li>
+			<li class:active={pathname.startsWith('/blog')}>
+				<a data-sveltekit-preload-data="hover" href="/blog">Blog</a>
 			</li>
-			<li class:active={$page.url.pathname === '/todos'}>
-				<a sveltekit:prefetch href="/todos">Todos</a>
+			<li class:active={pathname.startsWith('/memory-game')}>
+				<a data-sveltekit-preload-data="hover" href="/memory-game">Memory Game</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">

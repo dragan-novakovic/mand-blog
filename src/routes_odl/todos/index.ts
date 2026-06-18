@@ -1,67 +1,48 @@
-import { api } from './_api';
-import type { RequestHandler } from './__types';
+import { api } from "./_api";
+import { json, redirect, type RequestHandler } from "@sveltejs/kit";
 
-export const get: RequestHandler = async ({ locals }) => {
-	// locals.userid comes from src/hooks.js
-	const response = await api('GET', `todos/${locals.userid}`);
+export const GET: RequestHandler = async ({ locals }) => {
+  // locals.userid comes from src/hooks.server.ts
+  const response = await api("GET", `todos/${locals.userid}`);
 
-	if (response.status === 404) {
-		// user hasn't created a todo list.
-		// start with an empty array
-		return {
-			body: {
-				todos: []
-			}
-		};
-	}
+  if (response.status === 404) {
+    return json({ todos: [] });
+  }
 
-	if (response.status === 200) {
-		return {
-			body: {
-				todos: await response.json()
-			}
-		};
-	}
+  if (response.status === 200) {
+    return json({ todos: await response.json() });
+  }
 
-	return {
-		status: response.status
-	};
+  return new Response(null, { status: response.status });
 };
 
-export const post: RequestHandler = async ({ request, locals }) => {
-	const form = await request.formData();
+export const POST: RequestHandler = async ({ request, locals }) => {
+  const form = await request.formData();
 
-	await api('POST', `todos/${locals.userid}`, {
-		text: form.get('text')
-	});
+  await api("POST", `todos/${locals.userid}`, {
+    text: form.get("text"),
+  });
 
-	return {};
+  return new Response(null, { status: 204 });
 };
 
 // If the user has JavaScript disabled, the URL will change to
 // include the method override unless we redirect back to /todos
-const redirect = {
-	status: 303,
-	headers: {
-		location: '/todos'
-	}
+export const PATCH: RequestHandler = async ({ request, locals }) => {
+  const form = await request.formData();
+
+  await api("PATCH", `todos/${locals.userid}/${form.get("uid")}`, {
+    text: form.has("text") ? form.get("text") : undefined,
+    done: form.has("done") ? !!form.get("done") : undefined,
+  });
+
+  redirect(303, "/todos");
 };
 
-export const patch: RequestHandler = async ({ request, locals }) => {
-	const form = await request.formData();
+export const DELETE: RequestHandler = async ({ request, locals }) => {
+  const form = await request.formData();
 
-	await api('PATCH', `todos/${locals.userid}/${form.get('uid')}`, {
-		text: form.has('text') ? form.get('text') : undefined,
-		done: form.has('done') ? !!form.get('done') : undefined
-	});
+  await api("DELETE", `todos/${locals.userid}/${form.get("uid")}`);
 
-	return redirect;
-};
-
-export const del: RequestHandler = async ({ request, locals }) => {
-	const form = await request.formData();
-
-	await api('DELETE', `todos/${locals.userid}/${form.get('uid')}`);
-
-	return redirect;
+  redirect(303, "/todos");
 };
